@@ -1,34 +1,39 @@
 @use '/src/styles/constants/colors';
-@use '/src/styles/mixins/position';
 
 .gnb {
-  position: relative;
+  position: fixed;
+  bottom: 80px;
   display: flex;
   justify-content: center;
-  padding: 24px 0;
+  width: 414px;
+  padding: 24px 0 30px;
   border-bottom: 1px solid colors.$GRAYE;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  background: linear-gradient(315deg, colors.$START 0%, colors.$MIDDLE 20%, colors.$END 100%);
 
   ul {
     display: flex;
+    width: 100%;
+    justify-content: center;
+    column-gap: 150px;
   }
 
-  li {
-    + li {
-      margin-left: 14px;
-    }
-  }
-
-  a {
+  .link {
     padding: 4px 14px;
-    color: colors.$GRAY2;
+    font-size: 20px;
+    fill: rgba(255, 255, 255, 0.7);
 
+    .searchIcon {
+      width: 30px;
+    }
+
+    .bookmarkIcon {
+      width: 23px;
+    }
     &.isActive {
       font-weight: 600;
+      fill: colors.$WHITE;
     }
-  }
-
-  .language {
-    @include position.absolute(50% 24px auto auto);
-    transform: translateY(-50%);
   }
 }

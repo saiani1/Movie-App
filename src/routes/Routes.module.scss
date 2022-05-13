@@ -1,8 +1,18 @@
 @use '/src/styles/constants/colors';
 
-.app {
+.appWrapper {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   height: 100vh;
+  background-color: colors.$GRAYD;
+
+  .app {
+    position: relative;
+    width: 414px;
+    height: 896px;
+    border-radius: 50px;
+    background: linear-gradient(142deg, colors.$START 0%, colors.$MIDDLE 20%, colors.$END 100%);
+    overflow: scroll;  
+  }
 }
