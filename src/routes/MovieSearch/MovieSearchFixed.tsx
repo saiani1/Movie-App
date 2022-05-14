@@ -1,21 +1,21 @@
 import styles from './MovieSearchFixed.module.scss'
 
 import { useRef } from 'hooks'
+import { useRecoil } from 'hooks/state'
+import { enteredMovieNameState } from 'states/movie'
 import { SearchIcon, UserIcon } from 'assets/svgs/index'
 
-interface Props {
-  callback: (movie: string) => void;
-}
-
-const MovieSearchFixed: React.FC<Props> = (props: Props) => {
+const MovieSearchFixed = () => {
+  const [, setEnteredMovie] = useRecoil(enteredMovieNameState)
   const inputRef = useRef<HTMLInputElement>(null)
   
   const searchMovieHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+    
     if (inputRef.current != null) {
-      const enteredMovie = inputRef.current.value
-      // eslint-disable-next-line react/destructuring-assignment
-      props.callback(enteredMovie)
+      const enterMovie = inputRef.current.value
+      setEnteredMovie(enterMovie)
+      inputRef.current.value = ""
     }
   }
 

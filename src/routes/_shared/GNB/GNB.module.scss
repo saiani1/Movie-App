@@ -1,16 +1,16 @@
 @use '/src/styles/constants/colors';
 
 .gnb {
-  position: fixed;
-  bottom: 80px;
+  margin-top: -80px;
+  position: sticky;
   display: flex;
   justify-content: center;
   width: 414px;
   padding: 24px 0 30px;
-  border-bottom: 1px solid colors.$GRAYE;
   border-bottom-left-radius: 50px;
   border-bottom-right-radius: 50px;
   background: linear-gradient(315deg, colors.$START 0%, colors.$MIDDLE 20%, colors.$END 100%);
+  box-shadow: 0 -10px 10px -10px colors.$SHADOW;
 
   ul {
     display: flex;

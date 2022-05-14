@@ -1,0 +1,109 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/position';
+
+.movieList {
+  position: relative;
+  margin: 20px 0;
+  
+  .movieBtn {
+    display: flex;
+    column-gap: 30px;
+    padding: 20px;
+    width: 338px;
+    height: 200px;
+    background: rgba(colors.$WHITE, 0.05);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: linear 0.3s;
+
+    &:hover {
+      background: rgba(colors.$WHITE, 0.1);
+    }
+
+    .posterWrap {
+      pointer-events: none;
+
+      .moviePoster {
+        width: 123px;
+        height: 160px;
+        background-color: colors.$WHITE;
+        border-radius: 5px;
+      }
+    }
+  
+    .movieDetailWrap {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      row-gap: 12px;
+      height: 100%;
+      pointer-events: none;
+
+      .movieTitle {
+        text-align: left;
+        font-size: 25px;
+        font-weight: bold;
+        color: colors.$WHITE;
+      }
+  
+      .movieText {
+        display: flex;
+        justify-content: start;
+        column-gap: 30px;
+  
+        dt {
+          margin-bottom: 5px;
+          font-size: 14px;
+          color: rgba(colors.$GRAYB, 0.5);
+        }
+        dd {
+          font-size: 17px;
+          font-weight: 600;          
+          color: colors.$WHITE;
+        }
+      }
+    }
+  }
+  .modalWrap {
+    .backdrop {
+      @include position.absolute(0);
+      background-color: rgba(colors.$BLACK, 0.6);
+      border-radius: 8px;
+    }
+
+    .modal {
+      @include position.absolute(50% 0 0 50%);
+      transform: translate(-50%, -50%);
+      display: flex;
+      height: 40px;
+  
+      button {
+        width: 50%;
+        color: colors.$WHITE;
+        font-size: 14px;
+        font-weight: bold;
+      }
+      .allow {
+        background-color: colors.$TASK_ITEM_TITLE;
+      }
+      .cancle {
+        background-color: colors.$GRAY6;
+      }
+    }
+  }
+  .likeWrap {
+    @include position.absolute(15px 15px auto auto);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: colors.$GRAY7;
+
+    .likeIcon {
+      width: 17px;
+      fill: colors.$ORANGE;
+    }
+  }
+}

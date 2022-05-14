@@ -7,6 +7,7 @@ export interface IMovie {
 }
 
 export interface IMovieRes {
+  data(data: any): void | PromiseLike<void>
   Response: string,
   Search: IMovie[],
   totalResult: string

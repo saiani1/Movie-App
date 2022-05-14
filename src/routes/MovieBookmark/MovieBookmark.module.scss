@@ -1,0 +1,17 @@
+@use '/src/styles/mixins/position';
+@use '/src/styles/constants/colors';
+
+.wrap {
+  width: 100%;
+  height: 100%;
+  padding: 80px 40px 20px;
+
+  h3 {
+    padding-bottom: 30px;
+    font-size: 25px;
+    font-weight: 600;
+    letter-spacing: 0.1px;
+    color: colors.$WHITE;
+    border-bottom: 1px solid rgba(colors.$WHITE, 0.3);
+  }
+}
