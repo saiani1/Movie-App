@@ -1,46 +1,18 @@
-# Getting Started with Create React App
+# Movie-App 제작과정
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1. 구현방법
+- 메인 앱 : 검색탭, 즐겨찾기탭을 각각의 컴포넌트로 제작하여 react-router로 연결함, gnb는 따로 만들어 position: sticky로 메인앱에 고정함. 앱 부분에 overflow: scroll을 주어 안에 들어가는 내용이 많으면 스크롤되게 함.
+- 검색탭 : 검색부분을 따로 만들어 position: fixed로 고정했고, useRef를 써서 input value를 recoilState로 검색탭으로 보낸 후, 검색탭에서 api를 호출하여 자료를 받아온 후에 movieItem을 map함수를 사용하여 뿌려주었음. 그리고 localstorage에 즐겨찾기한 영화를 저장해서 새로고침해도 날아가지 않게 하고, 즐겨찾기탭으로 영화정보를 받아올 수 있게 하였음.
+- 즐겨찾기탭 : localstorage에 저장된 객체배열을 map함수로 뿌려줌.
+- 즐겨찾기 모달창 : 영화wrap윗부분에만 나타나면 되는 부분이라 portal을 쓰지 않고 버튼을 position: absolute로 올려 구현함.
 
-## Available Scripts
+2. 어려웠던 점 & 해결과정
+- TypeScript사용이 처음이라 간단히 공부하고 과제를 시작했지만 아직 잘 모르는 부분이 많아 any type을 많이 쓴 점. 아직도 type선언에 대해 잘 모르겠어서 앞으로도 공부가 많이 필요함.
+- recoil이 뭔지 이해가 부족한 상태로 자식 컴포넌트에서 부모 컴포넌트로 state끌어올리기를 시도했고, 이와 관련하여 검색하느라 시간을 너무 많이 썼음. 하지만 recoil에 대해 공부해보니 모든 게 비교적 풀렸음.
+- api가 탭을 누를 때마다 새로 데이터를 호출하는 방식이 아닌 것 같은데 조금 더 공부가 필요한 것 같다...
+- localstorage에 데이터를 저장하는데 null값이 계속 들어가서 즐겨찾기 탭에서 map오류가 너무 많이 났다. 에러 날때마다 그때그때 에러를 잡으려고 if문을 남발했는데 아마 조금 더 고민하면 깔끔하게 쓸 수 있을 것 같기도 하다.
+- 전체적으로 알긴 아는데 실제로 써본적이 없는 것들이 대부분이어서 실제로 코드를 치는 시간보다 검색하는 시간이 더 많이 걸렸던 것 같음.
 
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+3. 구현못한 기능
+- 무한스크롤
+- 영화목록 드래그 앤 드롭
