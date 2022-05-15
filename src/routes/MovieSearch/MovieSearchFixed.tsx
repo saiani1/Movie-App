@@ -23,7 +23,7 @@ const MovieSearchFixed = () => {
     <form className={styles.fixedWrap} onSubmit={searchMovieHandler}>
       <div className={styles.userInfoWrap}>
         <div className={styles.greetingTextWrap}>
-          <p className={styles.mainText}>Hello, <span>Bonnie!</span></p>
+          <p className={styles.mainText}>Welcome to <span>App!</span></p>
           <span className={styles.subText}>Book your favorite movie</span>  
         </div>
         <div className={styles.userIconWrap}>

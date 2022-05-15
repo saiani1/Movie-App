@@ -6,12 +6,18 @@
   height: 100%;
   padding: 80px 40px 20px;
 
-  h3 {
+  .title {
     padding-bottom: 30px;
-    font-size: 25px;
+    font-size: 22px;
     font-weight: 600;
     letter-spacing: 0.1px;
     color: colors.$WHITE;
     border-bottom: 1px solid rgba(colors.$WHITE, 0.3);
+  }
+
+  .errorText {
+      margin-top: 30px;
+      text-align: center;
+      color: colors.$WHITE;
   }
 }

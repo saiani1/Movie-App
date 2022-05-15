@@ -1,13 +1,14 @@
 import { atom } from 'hooks/state'
 import { IMovie } from 'types/movie.d'
 
-export const bookmarkListMovieState = atom<IMovie[]>({
-  key: 'bookmarkListMovieState',
-  default: [],
+
+export const localstorageListMovieState = atom<IMovie[]>({
+  key: 'localstorageListMovieState',
+  default: localStorage.getItem('likeMovie') !== null ? JSON.parse(localStorage.getItem('likeMovie') || '') : [],
 })
 
-export const bookmarkMovieNameState = atom<string>({
-  key: 'bookmarkMovieNameState',
+export const likeMovieNameState = atom<string>({
+  key: 'likeMovieNameState',
   default: undefined,
 })
 

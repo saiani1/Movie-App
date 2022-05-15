@@ -2,16 +2,16 @@ import { useEffect, useState } from 'hooks'
 import { getMovieListApi } from 'services/movie'
 import { IMovieRes, IMovie } from 'types/movie.d'
 import { useRecoil } from 'hooks/state'
-import { bookmarkMovieNameState, bookmarkListMovieState, enteredMovieNameState } from 'states/movie'
+import { likeMovieNameState, localstorageListMovieState, enteredMovieNameState } from 'states/movie'
 
 import styles from './MovieSearch.module.scss'
 import MovieItem from '../../components/UI/MovieItem'
 import MovieSearchFixed from './MovieSearchFixed'
 
 const MovieSearch = () => {
-  const [enteredMovie, setEnteredMovie] = useRecoil(enteredMovieNameState)
-  const [bookmarkMovieList, setBookmarkMovieList] = useRecoil(bookmarkListMovieState)
-  const [selectMovie, setSelectMovie] = useRecoil(bookmarkMovieNameState)
+  const [enteredMovie] = useRecoil(enteredMovieNameState)
+  const [likeMovie, setLikeMovie] = useRecoil(likeMovieNameState)
+  const [localstorageListMovie, setLocalstorageListMovie] = useRecoil(localstorageListMovieState)
   const [page, setPage] = useState<number>(1)
   const [data, setData] = useState<IMovieRes>()
 
@@ -23,13 +23,24 @@ const MovieSearch = () => {
       setData(res.data)
     })
   }, [enteredMovie, page])
-  
+
   useEffect(() => {
-    setBookmarkMovieList((prev) => {
-      const selectMovieObj = data?.Search.find((movie) => movie.Title === selectMovie[0])
-      return {...prev, selectMovieObj}
-    })
-  }, [selectMovie])
+    if (likeMovie !== '') {
+      let tmpLocalStorageMovie: object[]
+      const bookmarkMovieObject: any = data?.Search.find((movie) => movie.Title === likeMovie)
+
+      if (localstorageListMovie[0] !== null && bookmarkMovieObject !== undefined) {
+        tmpLocalStorageMovie = [...localstorageListMovie, bookmarkMovieObject]
+      } else tmpLocalStorageMovie = [bookmarkMovieObject]
+
+      if (tmpLocalStorageMovie[0] !== undefined) {
+        localStorage.setItem('likeMovie', JSON.stringify(tmpLocalStorageMovie))
+        setLocalstorageListMovie(JSON.parse(localStorage.getItem('likeMovie') || ''))
+        setLikeMovie('')
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [likeMovie])
 
   if (!data) return null
 

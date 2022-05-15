@@ -8,13 +8,13 @@ const GNB = () => {
   return (
     <nav className={styles.gnb}>
       <ul>
-        <li>
-          <NavLink to='/' className={styles.link}>
+        <li className={styles.link}>
+          <NavLink to='/' className={({ isActive }) => cx({ [styles.isActive]: isActive })}>
             <SearchIcon className={styles.searchIcon} />
           </NavLink>
         </li>
-        <li>
-          <NavLink to='bookmark' className={styles.link}>
+        <li className={styles.link}>
+          <NavLink to='bookmark' className={({ isActive }) => cx({ [styles.isActive]: isActive })}>
             <BookmarkIcon className={styles.bookmarkIcon}/>
           </NavLink>
         </li>

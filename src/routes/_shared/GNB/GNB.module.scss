@@ -21,19 +21,26 @@
 
   .link {
     padding: 4px 14px;
-    font-size: 20px;
-    fill: rgba(255, 255, 255, 0.7);
+
+    .isActive {
+
+      .searchIcon, .bookmarkIcon {
+        font-weight: 600;
+        fill: colors.$WHITE;
+      }
+    }
 
     .searchIcon {
       width: 30px;
+      fill: rgba(255, 255, 255, 0.4);
+      font-size: 20px;
     }
 
     .bookmarkIcon {
       width: 23px;
+      fill: rgba(255, 255, 255, 0.4);
+      font-size: 20px;
     }
-    &.isActive {
-      font-weight: 600;
-      fill: colors.$WHITE;
-    }
+    
   }
 }

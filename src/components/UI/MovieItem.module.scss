@@ -86,24 +86,18 @@
       .allow {
         background-color: colors.$TASK_ITEM_TITLE;
       }
-      .cancle {
+      .allowCancel {
+        width: 80%;
+        background-color: colors.$PURPLE;
+      }
+      .cancel {
         background-color: colors.$GRAY6;
       }
     }
   }
-  .likeWrap {
+  .likeIcon {
     @include position.absolute(15px 15px auto auto);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: colors.$GRAY7;
-
-    .likeIcon {
-      width: 17px;
-      fill: colors.$ORANGE;
-    }
+    width: 17px;
+    fill: colors.$ORANGE;
   }
 }
